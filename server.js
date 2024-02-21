@@ -12,4 +12,9 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
 
 const PORT = process.env.PORT || 3000;
 
+const userRoutes = require('./routes/user');
+
+app.use('/api/users', userRoutes);
+
+
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
