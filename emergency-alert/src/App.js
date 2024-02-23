@@ -6,7 +6,6 @@ import AdminPage from './components/Admin';
 import isAdmin from '../../utils/isAdmin'
 
 function App() {
-
   return (
     <Router>
       <div className="App">
