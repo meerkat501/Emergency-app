@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const isAdmin = require('../utils/isAdmin');
 
 const router = express.Router();
 
@@ -59,6 +60,19 @@ router.post('/login', async (req, res) => {
     } catch (err) {
         console.error(err.message)
         res.status(500).send('Server Error!')
+    }
+});
+
+router.delete('/users/:id', isAdmin, async (req, res) => {
+    try {
+        const user = await User.findByIdAndDelete(req.params.id);
+
+        if (!user) {
+            return res.status(404).send();
+        }
+        res.send(user);
+    } catch (err) {
+        res.status(500).send();
     }
 });
 
