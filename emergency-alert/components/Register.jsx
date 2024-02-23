@@ -48,11 +48,11 @@ const Register = () => {
 
       const res = await axios.post('/api/users/register', body, config);
 
-      console.log(res.data); // 
+      console.log(res.data);
 
     } catch (err) {
 
-      console.error(err.response.data); // 
+      console.error(err.response.data);
 
     }
 
