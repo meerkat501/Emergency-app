@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const userRoute = require('./routes/userRoute');
-//const adminRoute = require('./routes/adminRoute');
+const adminRoute = require('./routes/adminRoute');
 
 const app = express();
 
@@ -15,7 +15,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api', userRoute);
-//app.use('/api', adminRoute);
+app.use('/api', adminRoute);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
